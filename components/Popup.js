@@ -1,9 +1,10 @@
 class Popup {
-  constructor(popupSelector, popupMessage) {
+  constructor(popupSelector, { dialog }, message) {
     this.popup = document.querySelector(popupSelector);
-    this.popupMessage = popupMessage;
+    this.popupMessage = dialog;
     this.yesButton = this.popup.querySelector('#popup-yes');
     this.cancelButton = this.popup.querySelector('#popup-cancel');
+    this.message = document.querySelector('.main__message');
   }
 
   open = () => {
@@ -16,9 +17,19 @@ class Popup {
     this.popup.classList.remove('popup_visible');
   };
 
+  setUserSelection = (option) => {
+    return option;
+  };
+
   setEventListeners() {
-    this.yesButton.addEventListener('click', this.close);
-    this.cancelButton.addEventListener('click', this.close);
+    this.yesButton.addEventListener('click', () => {
+      this.message.textContent = 'You have clicked yes';
+      this.close();
+    });
+    this.cancelButton.addEventListener('click', () => {
+      this.message.textContent = 'You have clicked Cancel';
+      this.close();
+    });
   }
 }
 
