@@ -1,14 +1,24 @@
 class Popup {
-  constructor(popupSelector) {
+  constructor(popupSelector, popupMessage) {
     this.popup = document.querySelector(popupSelector);
+    this.popupMessage = popupMessage;
+    this.yesButton = this.popup.querySelector('#popup-yes');
+    this.cancelButton = this.popup.querySelector('#popup-cancel');
   }
 
-  open() {
+  open = () => {
+    const dialogMessage = this.popup.querySelector('.popup__text');
+    dialogMessage.textContent = this.popupMessage;
     this.popup.classList.add('popup_visible');
-  }
+  };
 
-  close() {
+  close = () => {
     this.popup.classList.remove('popup_visible');
+  };
+
+  setEventListeners() {
+    this.yesButton.addEventListener('click', this.close);
+    this.cancelButton.addEventListener('click', this.close);
   }
 }
 
