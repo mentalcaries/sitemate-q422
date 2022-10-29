@@ -1,0 +1,9 @@
+.header{
+  max-block-size: 80px;
+  padding: 20px;
+}
+
+.header__logo{
+  max-width: 60px;
+  border-radius: 10px;
+}
