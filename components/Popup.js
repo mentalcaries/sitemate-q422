@@ -1,10 +1,9 @@
 class Popup {
-  constructor({popupSelector, dialog }, messageRenderer) {
+  constructor({popupSelector, dialogText, renderer}) {
     this.popup = document.querySelector(popupSelector);
-    this.popupMessage = dialog;
+    this.popupMessage = dialogText;
     this.popupButtons = document.querySelectorAll('.popup__button');
-    this.message = document.querySelector('.main__message');
-    this.messageRenderer = messageRenderer;
+    this.renderer = renderer;
   }
 
   open = () => {
@@ -20,7 +19,7 @@ class Popup {
   setEventListeners() {
     this.popupButtons.forEach((button) => {
       button.addEventListener('click', () => {
-        this.messageRenderer(`You have clicked ${button.value}`);
+        this.renderer(`You have clicked ${button.value}`);
         this.close();
       });
     });

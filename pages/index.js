@@ -8,9 +8,9 @@ const mainMessage = new Message('.main__message');
 const confirmationPopup = new Popup(
   {
     popupSelector: '.popup_confirm',
-    dialog: 'Are you sure you want to continue?',
+    dialogText: 'Are you sure you want to continue?',
+    renderer: mainMessage.setMessage
   },
-  mainMessage.setMessage
 );
 confirmationPopup.setEventListeners();
 
